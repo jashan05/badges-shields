@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: badges-shield
+  namespace: default
+  labels:
+    app: badges-shield
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: badges-shield
+  template:
+    metadata:
+      labels:
+        app: badges-shield
+    spec:
+      containers:
+      - name: shields-badges
+        image: shieldsio/shields:next
+        ports:
+        - containerPort: 80
